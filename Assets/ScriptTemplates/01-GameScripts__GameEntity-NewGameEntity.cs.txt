@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Voidrock
+{
+    public class #SCRIPTNAME# : GameEntity
+    {
+        /// <summary>
+        /// Called when this entity is spawned or if not, called on Awake()
+        /// </summary>
+        protected override void OnCreate()
+        {
+#NOTRIM#
+        }
+        /// <summary>
+        /// Called when something calls Delete() method for this entity
+        /// </summary>
+        protected override void OnDelete()
+        {
+#NOTRIM#
+        }
+    }
+}

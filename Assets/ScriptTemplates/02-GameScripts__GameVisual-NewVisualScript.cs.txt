@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Voidrock
+{
+    public class #SCRIPTNAME# : DependantMonobehavior<GameEntity>
+    {
+        /// <summary>
+        /// Initializes right after the game entity has, gets the reference to it
+        /// </summary>
+        /// <param name="component"></param>
+        public override void Initialize(GameEntity component)
+        {
+#NOTRIM#
+        }
+    }
+}
