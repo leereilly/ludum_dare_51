@@ -16,9 +16,9 @@ TagManager:
   - Enemy
   - PlayerBullet
   - Player
-  - 
-  - 
-  - 
+  - IgnorePlayer
+  - Wall
+  - EnemyBullet
   - 
   - 
   - 

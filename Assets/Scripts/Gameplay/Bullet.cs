@@ -48,6 +48,7 @@ namespace Helzinko
                 damagable.TakeDamage(damage, damageType, transform.position);
             }
 
+            collided = true;
             this.Unload();
         }
     }

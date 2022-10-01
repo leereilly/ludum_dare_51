@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Helzinko
 {
@@ -14,6 +15,7 @@ namespace Helzinko
         [SerializeField] private float jumpPower = 2500f;
         [SerializeField] float shootCooldown = 0.15f;
         [SerializeField] float bulletSpeed = 10f;
+        [SerializeField] float stunnedTime = 1f;
 
         [SerializeField] private Bullet bullet;
         [SerializeField] public Transform bulletPos;
@@ -22,6 +24,9 @@ namespace Helzinko
         private GroundCheck groundCheck;
 
         private float shotTimestamp = 0f;
+
+        private bool stunned;
+        private Tween stunTween;
 
         private void Awake()
         {
@@ -37,6 +42,8 @@ namespace Helzinko
 
         private void Update()
         {
+            if (stunned) return;
+
             rb.AddForce(new Vector2(input.movement * movementSpeed * Time.deltaTime, 0));
 
             if (input.Jump() && groundCheck.isGrounded) rb.AddForce(new Vector2(0, jumpPower));
@@ -53,6 +60,21 @@ namespace Helzinko
             var spawnedBullet = Instantiate(bullet, bulletPos.position, default, null);
             spawnedBullet.Init(input.aimVector.normalized * bulletSpeed, IDamagable.DamageType.Player);
             spawnedBullet.Load();
+        }
+
+        public override void TakeDamage(float amount, IDamagable.DamageType type, Vector2 point)
+        {
+            if(type == IDamagable.DamageType.Lava)
+            {
+                base.TakeDamage(amount, type, point);
+            }
+            else
+            {
+                stunned = true;
+                stunTween?.Kill();
+                stunTween = DOVirtual.DelayedCall(stunnedTime, () => stunned = false, false).SetTarget(gameObject);
+            }
+
         }
     }
 }

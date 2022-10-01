@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace Helzinko
 {
+    [DefaultExecutionOrder(-100)]
     public class Gameplay : MonoBehaviour
     {
         [SerializeField] private HUD hud;
         [SerializeField] private Lava lava;
+        public Player player;
 
         public Grid grid;
 
