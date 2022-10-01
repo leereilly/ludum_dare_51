@@ -59,7 +59,7 @@ namespace Helzinko
 
         public void OnTriggerEnter2D(Collider2D collision)
         {
-            if (((1 << collision.gameObject.layer) & wallMask) != 0)
+            if (collision.tag == "wall")
             {
                 dir *= -1;
             }

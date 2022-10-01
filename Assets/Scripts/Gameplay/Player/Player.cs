@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 namespace Helzinko
 {
     public class Player : GameEntity
     {
+        public UnityEvent OnShoot;
+        public UnityEvent OnJump;
+
         public PlayerController input { private set; get; }
 
         [SerializeField] private WeaponController weaponController;
@@ -25,7 +29,7 @@ namespace Helzinko
 
         private float shotTimestamp = 0f;
 
-        private bool stunned;
+        public bool stunned { private set; get; }
         private Tween stunTween;
 
         private void Awake()
@@ -46,11 +50,16 @@ namespace Helzinko
 
             rb.AddForce(new Vector2(input.movement * movementSpeed * Time.deltaTime, 0));
 
-            if (input.Jump() && groundCheck.isGrounded) rb.AddForce(new Vector2(0, jumpPower));
+            if (input.Jump() && groundCheck.isGrounded)
+            {
+                rb.AddForce(new Vector2(0, jumpPower));
+                OnJump.Invoke();
+            }
 
             if (input.shooting && shotTimestamp < Time.time - shootCooldown)
             {
                 shotTimestamp = Time.time;
+                OnShoot.Invoke();
                 Shoot();
             }
         }

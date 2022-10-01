@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4003440026530075972}
   - component: {fileID: 4003440026530075973}
-  - component: {fileID: 4003440026530075975}
   - component: {fileID: 8659829543293601351}
   - component: {fileID: 903100488501504756}
+  - component: {fileID: 1129273177821043800}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2fac7a7860e7fc141a7eae0fcaea650b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,7 +87,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4003440026530075975
+--- !u!114 &8659829543293601351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003440026530075978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0064a7f27620b346a4c7ae919f07874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  sprites:
+  - {fileID: -1002135773, guid: 0fed4ebb09f3e474493197b1ed594024, type: 3}
+  - {fileID: 805790454, guid: 0fed4ebb09f3e474493197b1ed594024, type: 3}
+  - {fileID: 823848440, guid: 0fed4ebb09f3e474493197b1ed594024, type: 3}
+  - {fileID: 2103971402, guid: 0fed4ebb09f3e474493197b1ed594024, type: 3}
+  landingSprite: {fileID: 21300000, guid: dabfc9301e6111748a44da650b98ddbc, type: 3}
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
+  lavaMask:
+    serializedVersion: 2
+    m_Bits: 128
+  fallingSpeed: 7.5
+  isBottomCube: 0
+  initialSpawned: 0
+--- !u!50 &903100488501504756
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003440026530075978}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1129273177821043800
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,47 +161,4 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &8659829543293601351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4003440026530075978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0064a7f27620b346a4c7ae919f07874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  mask:
-    serializedVersion: 2
-    m_Bits: 64
-  lavaMask:
-    serializedVersion: 2
-    m_Bits: 128
-  fallingSpeed: 2000
-  printThis: 0
-  isBottomCube: 0
---- !u!50 &903100488501504756
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4003440026530075978}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 10
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_EdgeRadius: 0.025

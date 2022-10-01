@@ -11,6 +11,7 @@ namespace Helzinko
     public class Bullet : MonoBehaviour, ILoadable
     {
         [SerializeField] private float time;
+        [SerializeField] private Effect deathEffect;
 
         Tween killTween;
 
@@ -47,6 +48,9 @@ namespace Helzinko
             {
                 damagable.TakeDamage(damage, damageType, transform.position);
             }
+
+            if(deathEffect)
+                Instantiate(deathEffect, transform.position, default, null);
 
             collided = true;
             this.Unload();

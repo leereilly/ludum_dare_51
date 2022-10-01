@@ -7,30 +7,42 @@ namespace Helzinko
 {
     public class Cube : GameEntity
     {
+        [SerializeField] private Sprite[] sprites;
+        [SerializeField] private Sprite landingSprite;
+
         [SerializeField] private LayerMask mask;
         [SerializeField] private LayerMask lavaMask;
 
         [SerializeField] private float fallingSpeed;
 
-        private Collider2D col;
-        private Rigidbody2D rb;
-
-        public bool printThis = false;
-
         public bool isBottomCube = false;
 
-        private Vector2 targetPos;
-        private bool isMoving = false;
+        private SpriteRenderer sr;
+
+        public Vector2 targetPos { private set; get; }
+        public bool isMoving { private set; get; } = false;
+
+        private bool firstLanding = false;
+
+        [SerializeField] private bool initialSpawned = false;
 
         private void Awake()
         {
+            sr = GetComponent<SpriteRenderer>();
+
+            if(initialSpawned)
+                sr.sprite = sprites[Random.Range(0, sprites.Length)];
+            else sr.sprite = landingSprite;
+
             // TODO: this is temp until loading implementing
             this.Load();
+
+            Gameplay.instance.grid.OnCubeDestroy.AddListener(Movement);
         }
 
         public void Spawn()
         {
-            this.Load();
+            firstLanding = true;
 
             Movement();
         }
@@ -39,21 +51,22 @@ namespace Helzinko
         {
             if (isMoving)
             {
-                var step = 10f * Time.deltaTime; // calculate distance to move
+                var step = fallingSpeed * Time.deltaTime; // calculate distance to move
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
                 if(transform.position.y <= targetPos.y)
                 {
+                    if (firstLanding)
+                    {
+                        firstLanding = false;
+
+                        sr.sprite = sprites[Random.Range(0, sprites.Length)];
+                    }
+
                     isMoving = false;
                     CheckIfGrounded();
                 }
             }
-        }
-
-        private void Start()
-        {
-            col = GetComponent<Collider2D>();
-            rb = GetComponent<Rigidbody2D>();
         }
 
         public override void TakeDamage(float amount, IDamagable.DamageType type, Vector2 point)
@@ -81,18 +94,20 @@ namespace Helzinko
             var ray = Physics2D.Raycast(transform.position, Vector2.down, 100f, mask);
             if (ray)
             {
-                targetPos = new Vector2(ray.transform.position.x, ray.transform.position.y + 1);
+                var bottomCube = ray.transform.GetComponent<Cube>();
+
+                if (bottomCube.isMoving) targetPos = new Vector2(transform.position.x, bottomCube.targetPos.y + 1f);
+                else targetPos = new Vector2(ray.transform.position.x, ray.transform.position.y + 1);
             }
             else
             {
                 ray = Physics2D.Raycast(transform.position, Vector2.down, 100f, lavaMask);
                 if (ray)
                 {
-                    print(ray.transform.GetComponent<BoxCollider2D>().bounds.max.y);
-                    targetPos = new Vector2(transform.position.x, Mathf.Round(ray.transform.GetComponent<BoxCollider2D>().bounds.max.y));
+                    targetPos = new Vector2(transform.position.x, Mathf.Round(ray.transform.GetComponent<Collider2D>().bounds.max.y));
                 }
 
-                else targetPos = new Vector2(transform.position.x, transform.position.y - 100f);
+                //else targetPos = new Vector2(transform.position.x, transform.position.y - 100f);
             }
 
             isMoving = true;
@@ -106,6 +121,13 @@ namespace Helzinko
             {
                 Movement();
             }
+        }
+
+        public override void Kill(IDamagable.DamageType type)
+        {
+            Gameplay.instance.grid.OnCubeDestroy.Invoke();
+
+            base.Kill(type);
         }
     }
 }
