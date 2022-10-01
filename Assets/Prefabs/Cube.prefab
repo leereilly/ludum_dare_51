@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  cubeMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &903100488501504756
 Rigidbody2D:
   serializedVersion: 4

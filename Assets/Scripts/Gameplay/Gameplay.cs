@@ -8,6 +8,8 @@ namespace Helzinko
         [SerializeField] private HUD hud;
         [SerializeField] private Lava lava;
 
+        public Grid grid;
+
         private const float waveTime = 10f;
 
         public static Gameplay instance;
