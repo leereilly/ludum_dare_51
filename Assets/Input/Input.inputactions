@@ -22,6 +22,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "b37a056b-22ff-414f-934a-e8fa1edfb35b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Value",
+                    "id": "c8161425-3c7c-467b-bb76-e1cf5a676b98",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -132,6 +150,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ccbed347-aae4-417d-a385-97479db623c0",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b06a5387-6bc3-4741-9ad5-9561941ba2b4",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
