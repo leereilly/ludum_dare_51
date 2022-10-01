@@ -440,7 +440,7 @@ MonoBehaviour:
   jumpPower: 2500
   shootCooldown: 0.2
   bulletSpeed: 20
-  stunnedTime: 1
+  stunnedTime: 0.35
   bullet: {fileID: 1223157307299715251, guid: bc93f99c9b03da245839ec0de6b7a855, type: 3}
   bulletPos: {fileID: 6941462028589703650}
 --- !u!114 &7903443933806553072

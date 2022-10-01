@@ -5,6 +5,10 @@ namespace Helzinko
 {
     public class FlyingEnemy : Enemy
     {
+        [SerializeField] private SpriteRenderer sr;
+
+        [SerializeField] private Effect dieEffect;
+
         protected Vector2 dir = Vector2.right;
         [SerializeField] private float patrolSpeed;
 
@@ -22,6 +26,8 @@ namespace Helzinko
         private void Start()
         {
             dir = Random.value < 0.5f ? Vector2.right : Vector2.left;
+
+            sr.flipX = dir == Vector2.left ? true : false;
         }
 
         private void Awake()
@@ -62,6 +68,7 @@ namespace Helzinko
             if (collision.tag == "wall")
             {
                 dir *= -1;
+                sr.flipX = dir == Vector2.left ? true : false;
             }
         }
 
@@ -70,6 +77,14 @@ namespace Helzinko
             var spawnedBullet = Instantiate(bullet, transform.position, default, null);
             spawnedBullet.Init(Vector2.down * bulletSpeed, IDamagable.DamageType.Enemy);
             spawnedBullet.Load();
+        }
+
+        public override void Kill(IDamagable.DamageType type)
+        {
+            if (dieEffect)
+                Instantiate(dieEffect, transform.position, default, null);
+
+            base.Kill(type);
         }
     }
 }
