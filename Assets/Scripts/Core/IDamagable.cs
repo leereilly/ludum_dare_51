@@ -1,0 +1,11 @@
+using UnityEngine;
+
+namespace Helzinko
+{
+    public interface IDamagable
+    {
+        public enum DamageType { Player, Enemy, Lava }
+
+        void TakeDamage(float amount, DamageType type, Vector2 point);
+    }
+}
