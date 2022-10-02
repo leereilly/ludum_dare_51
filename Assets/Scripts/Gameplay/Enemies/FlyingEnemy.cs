@@ -74,6 +74,8 @@ namespace Helzinko
 
         private void Shoot()
         {
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.enemyShoot);
+
             var spawnedBullet = Instantiate(bullet, transform.position, default, null);
             spawnedBullet.Init(Vector2.down * bulletSpeed, IDamagable.DamageType.Enemy);
             spawnedBullet.Load();

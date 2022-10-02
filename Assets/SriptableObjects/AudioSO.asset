@@ -15,3 +15,19 @@ MonoBehaviour:
   sounds:
   - type: 0
     clip: {fileID: 8300000, guid: d33628db0cb571c46951a58d3ff12f7e, type: 3}
+  - type: 1
+    clip: {fileID: 8300000, guid: db07f23e1b39e1e42b60c8fa422ad69e, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: 3a4c99759b8fa4d4d8a548783f3c4974, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: fa7e9f0dff5c7fc47bf43775478bad33, type: 3}
+  - type: 4
+    clip: {fileID: 8300000, guid: d04d484e92ef53845844b5eed5c92421, type: 3}
+  - type: 5
+    clip: {fileID: 8300000, guid: 8aac4091f85b7494883f8c0b2eb6299b, type: 3}
+  - type: 6
+    clip: {fileID: 8300000, guid: 7094397393e91194a8ea66eebc4456b5, type: 3}
+  - type: 8
+    clip: {fileID: 8300000, guid: 0ce4938cc0e022d408032746c2cb42dd, type: 3}
+  - type: 9
+    clip: {fileID: 8300000, guid: 949f986e84ae5be448a2cca640b23854, type: 3}

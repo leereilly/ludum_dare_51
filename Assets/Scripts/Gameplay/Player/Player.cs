@@ -70,7 +70,7 @@ namespace Helzinko
 
         private void Shoot()
         {
-            SoundManager.instance.PlayEffect(GameType.SoundTypes.playerShoot);
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.playerShoot, 0.2f);
 
             var spawnedBullet = Instantiate(bullet, bulletPos.position, default, null);
             spawnedBullet.Init(input.aimVector.normalized * bulletSpeed, IDamagable.DamageType.Player);
@@ -96,6 +96,8 @@ namespace Helzinko
         {
             if (dieEffect)
                 Instantiate(dieEffect, transform.position, default, null);
+
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.playerDie);
 
             OnDie.Invoke();
 

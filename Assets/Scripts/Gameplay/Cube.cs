@@ -51,7 +51,7 @@ namespace Helzinko
         {
             firstLanding = true;
 
-            col.size = new Vector2(col.size.x / 3, col.size.y);
+            col.size = new Vector2(col.size.x / 2, col.size.y);
 
             Movement();
         }
@@ -73,7 +73,7 @@ namespace Helzinko
                 {
                     firstLanding = false;
 
-                    col.size = new Vector2(col.size.x * 3, col.size.y);
+                    col.size = new Vector2(col.size.x * 2, col.size.y);
 
                     if (spawnEffect)
                     {
@@ -81,6 +81,8 @@ namespace Helzinko
                     }
 
                     sr.sprite = sprites[Random.Range(0, sprites.Length)];
+
+                    SoundManager.instance.PlayEffect(GameType.SoundTypes.cubeHitGround);
                 }
 
 
@@ -150,6 +152,8 @@ namespace Helzinko
         {
             if (dieEffect)
                 Instantiate(dieEffect, transform.position, default, null);
+
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.cubeDie);
 
             base.Kill(type);
         }

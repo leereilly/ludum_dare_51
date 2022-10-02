@@ -320,7 +320,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.1
+    m_ImpulseDuration: 0.15
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
@@ -351,7 +351,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -0.075, z: 0}
+  m_DefaultVelocity: {x: 0, y: -0.1, z: 0}
 --- !u!1 &7903443933806553086
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +433,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnJump:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamage:
     m_PersistentCalls:
       m_Calls: []
   weaponController: {fileID: 1282949124353850592}

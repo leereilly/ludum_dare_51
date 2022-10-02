@@ -57,6 +57,7 @@ namespace Helzinko
         private void Jump()
         {
             anim.SetTrigger(jumpAnim);
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.playerJump);
         }
 
         private void Shoot()

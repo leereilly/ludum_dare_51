@@ -18,5 +18,12 @@ namespace Helzinko
 
             base.Kill(type);
         }
+
+        public override void TakeDamage(float amount, IDamagable.DamageType type, Vector2 point)
+        {
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.enemyHurt);
+
+            base.TakeDamage(amount, type, point);
+        }
     }
 }

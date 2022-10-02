@@ -30,6 +30,7 @@ namespace Helzinko
         {
             targetHeight += waveRiseHeigth;
             traveledTime = 0f;
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.lavaMove);
         }
 
         private void Update()

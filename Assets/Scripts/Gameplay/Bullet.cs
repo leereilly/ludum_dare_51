@@ -52,6 +52,8 @@ namespace Helzinko
             if(deathEffect)
                 Instantiate(deathEffect, transform.position, default, null);
 
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.bulletHit);
+
             collided = true;
             this.Unload();
         }
