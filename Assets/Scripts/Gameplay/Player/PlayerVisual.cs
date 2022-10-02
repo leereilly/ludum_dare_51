@@ -25,12 +25,25 @@ namespace Helzinko
         private Rigidbody2D rb;
         private GroundCheck groundCheck;
 
+        private Color defaultColor;
+        private Color flashedColor;
+
+        private WaitForSeconds blinkingWaitForSeconds;
+
+        private Coroutine blinkingCoroutine;
+
         private void Awake()
         {
             player = GetComponent<Player>();
             input = GetComponent<PlayerController>();
             rb = GetComponent<Rigidbody2D>();
             groundCheck = GetComponent<GroundCheck>();
+
+            defaultColor = spriteRenderer.color;
+
+            flashedColor = new Color(1, 1, 1, 0);
+
+            blinkingWaitForSeconds = new WaitForSeconds(0.1f);
         }
 
         private void Start()
@@ -71,6 +84,20 @@ namespace Helzinko
         private void DamageTaken()
         {
             damageImpulse.GenerateImpulse();
+            blinkingCoroutine = StartCoroutine(Blink());
+        }
+
+        private IEnumerator Blink()
+        {
+            while (player.stunned)
+            {
+                spriteRenderer.color = flashedColor;
+                yield return blinkingWaitForSeconds;
+                spriteRenderer.color = defaultColor;
+                yield return blinkingWaitForSeconds;
+            }
+
+            spriteRenderer.color = defaultColor;
         }
     }
 }

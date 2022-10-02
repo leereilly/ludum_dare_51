@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Cinemachine;
 
 namespace Helzinko
 {
     public class Cube : GameEntity
     {
+        [SerializeField] CinemachineImpulseSource landingImpulse;
+
         [SerializeField] private Sprite[] sprites;
         [SerializeField] private Sprite landingSprite;
 
@@ -80,6 +83,8 @@ namespace Helzinko
                         Instantiate(spawnEffect, new Vector2(transform.position.x, GetComponent<Collider2D>().bounds.min.y + 0.25f), default, null);
                     }
 
+                    landingImpulse.GenerateImpulse();
+
                     sr.sprite = sprites[Random.Range(0, sprites.Length)];
 
                     SoundManager.instance.PlayEffect(GameType.SoundTypes.cubeHitGround);
@@ -111,6 +116,11 @@ namespace Helzinko
 
         private void Movement()
         {
+            if (touchedLava)
+            {
+                return;
+            }
+
             var ray = Physics2D.Raycast(transform.position, Vector2.down, 100f, mask);
 
             if (ray)

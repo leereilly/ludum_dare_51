@@ -85,8 +85,8 @@ namespace Helzinko
             }
             else
             {
-                OnDamage.Invoke();
                 stunned = true;
+                OnDamage.Invoke();
                 stunTween?.Kill();
                 stunTween = DOVirtual.DelayedCall(stunnedTime, () => stunned = false, false).SetTarget(gameObject);
             }
