@@ -10,7 +10,7 @@ namespace Helzinko
         [SerializeField] private float waveRiseSpeed = 1f;
         [SerializeField] private float waveRiseHeigth = 1.1f;
 
-        private float targetHeight;
+        public float targetHeight { private set; get; }
 
         private float traveledTime = 0f;
 
@@ -33,6 +33,11 @@ namespace Helzinko
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if(collision.TryGetComponent(out Cube cube))
+            {
+                cube.touchedLava = true;
+            }
+
             if(collision.TryGetComponent(out IDamagable damagable))
             {
                 damagable.TakeDamage(damage, IDamagable.DamageType.Lava, collision.transform.position);

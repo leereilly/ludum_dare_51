@@ -16,6 +16,8 @@ namespace Helzinko
 
         public bool shooting { private set; get; }
 
+        [SerializeField] private Transform cursor;
+
         private void Awake()
         {
             playerInput = GetComponent<PlayerInput>();
@@ -45,17 +47,17 @@ namespace Helzinko
         {
             if (playerInput.currentControlScheme == "Keyboard")
             {
-                Cursor.visible = true;
+                cursor.gameObject.SetActive(true);
 
                 Vector2 mousePosition = Mouse.current.position.ReadValue();
                 Vector2 cursorWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
                 aimVector = (cursorWorldPosition - (Vector2)transform.position).normalized;
 
-                //cursor.position = cursorWorldPosition;
+                cursor.position = cursorWorldPosition;
             }
             else
             {
-                Cursor.visible = false;
+                cursor.gameObject.SetActive(false);
             }
         }
 

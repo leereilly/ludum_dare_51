@@ -23,6 +23,8 @@ namespace Helzinko
         private void Awake()
         {
             instance = this;
+
+            Cursor.visible = false;
         }
 
         private void Update()

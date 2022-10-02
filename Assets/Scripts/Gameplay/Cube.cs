@@ -11,7 +11,7 @@ namespace Helzinko
         [SerializeField] private Sprite landingSprite;
 
         [SerializeField] private LayerMask mask;
-        [SerializeField] private LayerMask lavaMask;
+        //[SerializeField] private LayerMask lavaMask;
 
         [SerializeField] private float fallingSpeed;
 
@@ -28,6 +28,8 @@ namespace Helzinko
         private bool firstLanding = false;
 
         [SerializeField] private bool initialSpawned = false;
+
+        public bool touchedLava = false;
 
         private void Awake()
         {
@@ -52,8 +54,12 @@ namespace Helzinko
         {
             Movement();
 
-            var step = fallingSpeed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+            if(targetPos.y < transform.position.y)
+            {
+                var step = fallingSpeed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+            }
+
 
             if (transform.position.y <= targetPos.y)
             {
@@ -68,6 +74,8 @@ namespace Helzinko
 
                     sr.sprite = sprites[Random.Range(0, sprites.Length)];
                 }
+
+
             }
         }
 
@@ -94,22 +102,44 @@ namespace Helzinko
         private void Movement()
         {
             var ray = Physics2D.Raycast(transform.position, Vector2.down, 100f, mask);
+
             if (ray)
             {
-                var bottomCube = ray.transform.GetComponent<Cube>();
-
-                //if (bottomCube.isMoving) targetPos = new Vector2(transform.position.x, bottomCube.targetPos.y + 1f);
-                /*else*/ targetPos = new Vector2(ray.transform.position.x, ray.transform.position.y + 1);
+                var cube = ray.transform.GetComponent<Cube>();
+                if (cube)
+                {
+                    targetPos = new Vector2(ray.transform.position.x, ray.transform.position.y + 1);
+                }
+                else
+                {
+                    var lava = ray.transform.GetComponent<Lava>();
+                    if (lava)
+                    {
+                        targetPos = new Vector2(transform.position.x, Mathf.Round(ray.transform.GetComponent<Collider2D>().bounds.max.y));
+                    }
+                }
             }
             else
             {
-                ray = Physics2D.Raycast(transform.position, Vector2.down, 100f, lavaMask);
-                if (ray)
-                {
-                    targetPos = new Vector2(transform.position.x, Mathf.Round(ray.transform.GetComponent<Collider2D>().bounds.max.y));
-                }
-
+                targetPos = new Vector2(transform.position.x, Vector2.down.y);
             }
+            //if (ray)
+            //{
+            //    var bottomCube = ray.transform.GetComponent<Cube>();
+
+            //    if (bottomCube.isMoving) targetPos = new Vector2(transform.position.x, bottomCube.targetPos.y + 1f);
+            //    /*else*/
+            //    targetPos = new Vector2(ray.transform.position.x, ray.transform.position.y + 1);
+            //}
+            //else
+            //{
+            //    ray = Physics2D.Raycast(transform.position, Vector2.down, 100f, lavaMask);
+            //    if (ray)
+            //    {
+            //        targetPos = new Vector2(transform.position.x, Mathf.Round(ray.transform.GetComponent<Collider2D>().bounds.max.y));
+            //    }
+
+            //}
         }
 
         public override void Kill(IDamagable.DamageType type)
