@@ -789,4 +789,11 @@ MonoBehaviour:
     spawningEnemies:
     - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
     - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
+  - maxEnemiesOnScreen: 10
+    flyingEnemyShootingSpeed: 1
+    enemySpawningSpeed: 0.5
+    bomberSpeed: 300
+    spawningEnemies:
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
   timeBetweenEnemySpawn: 1

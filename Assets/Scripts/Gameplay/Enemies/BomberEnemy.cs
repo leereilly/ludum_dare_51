@@ -33,8 +33,20 @@ namespace Helzinko
         {
             if(collision.TryGetComponent(out IDamagable damagable))
             {
-                damagable.TakeDamage(1f, IDamagable.DamageType.Enemy, transform.position);
-                Kill(IDamagable.DamageType.Enemy);
+                if(collision.TryGetComponent(out Cube cube))
+                {
+                    if(cube.firstLanding) Kill(IDamagable.DamageType.Enemy);
+                    else
+                    {
+                        damagable.TakeDamage(1f, IDamagable.DamageType.Enemy, transform.position);
+                        Kill(IDamagable.DamageType.Enemy);
+                    }
+                }
+                else
+                {
+                    damagable.TakeDamage(1f, IDamagable.DamageType.Enemy, transform.position);
+                    Kill(IDamagable.DamageType.Enemy);
+                }
             }
         }
 

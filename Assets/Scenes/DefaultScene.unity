@@ -1240,11 +1240,9 @@ MonoBehaviour:
   playerInitPos: {x: 0, y: 2, z: 0}
   lavaInitPos: {x: 0, y: -10.0043, z: 0}
   blocksInitPos: {x: 0, y: 0, z: 0}
-  wallInitPos: {x: -8.304585, y: 64.1666, z: 0}
   playerPrefab: {fileID: 7903443933806553085, guid: 11261cefd22b1b345aa95b71545d2705, type: 3}
   lavaPrefab: {fileID: 303337342}
   blocksContainerPrefab: {fileID: 5472469139493360531, guid: c94582ba1f104754081df3deb85e364a, type: 3}
-  wall: {fileID: 1225441415216109250, guid: 5200a119880a59c43ae1d87a734a11c2, type: 3}
   cursor: {fileID: 1268609021}
   cCamera: {fileID: 594371330}
   hud: {fileID: 887722061}
@@ -2554,7 +2552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1554050898
 Transform:
   m_ObjectHideFlags: 0
@@ -2818,7 +2816,7 @@ PrefabInstance:
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1658711571144069395, guid: 85d25c79f55163947ad2d17ec8d69069, type: 3}
       propertyPath: m_Name
-      value: Bounds
+      value: LavaParticles
       objectReference: {fileID: 0}
     - target: {fileID: 3932243549220437248, guid: 85d25c79f55163947ad2d17ec8d69069, type: 3}
       propertyPath: m_IsActive

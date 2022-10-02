@@ -28,7 +28,7 @@ namespace Helzinko
         public Vector2 targetPos { private set; get; }
         //public bool isMoving { private set; get; } = false;
 
-        private bool firstLanding = false;
+        public bool firstLanding { private set; get; } = false;
 
         [SerializeField] private bool initialSpawned = false;
 
