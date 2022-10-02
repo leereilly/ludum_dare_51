@@ -16,6 +16,7 @@ namespace Helzinko
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         [SerializeField] CinemachineImpulseSource shootImpulse;
+        [SerializeField] CinemachineImpulseSource damageImpulse;
 
         [SerializeField] Effect muzzleEffect;
 
@@ -36,6 +37,7 @@ namespace Helzinko
         {
             player.OnShoot.AddListener(Shoot);
             player.OnJump.AddListener(Jump);
+            player.OnDamage.AddListener(DamageTaken);
         }
 
         private void Update()
@@ -64,6 +66,11 @@ namespace Helzinko
         {
             Instantiate(muzzleEffect, player.bulletPos.position, default, transform);
             shootImpulse.GenerateImpulse();
+        }
+
+        private void DamageTaken()
+        {
+            damageImpulse.GenerateImpulse();
         }
     }
 }

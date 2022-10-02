@@ -28,6 +28,9 @@ namespace Helzinko
             dir = Random.value < 0.5f ? Vector2.right : Vector2.left;
 
             sr.flipX = dir == Vector2.left ? true : false;
+
+            var enemySpawner = EnemySpawner.instance;
+            if (enemySpawner) timeBetweenShots = enemySpawner.GetCurrentPool().flyingEnemyShootingSpeed;
         }
 
         private void Awake()

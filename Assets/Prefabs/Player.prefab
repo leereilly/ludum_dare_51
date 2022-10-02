@@ -626,6 +626,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8842e2d7ad2314f8494427965b1c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  levelPools:
+  - maxEnemiesOnScreen: 2
+    flyingEnemyShootingSpeed: 2
+    enemySpawningSpeed: 1
+    bomberSpeed: 250
+    spawningEnemies:
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 3
+    flyingEnemyShootingSpeed: 2
+    enemySpawningSpeed: 1
+    bomberSpeed: 250
+    spawningEnemies:
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 4
+    flyingEnemyShootingSpeed: 2
+    enemySpawningSpeed: 1
+    bomberSpeed: 250
+    spawningEnemies:
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 5
+    flyingEnemyShootingSpeed: 1.9
+    enemySpawningSpeed: 1
+    bomberSpeed: 250
+    spawningEnemies:
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 6
+    flyingEnemyShootingSpeed: 1.8
+    enemySpawningSpeed: 0.9
+    bomberSpeed: 250
+    spawningEnemies:
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
+  - maxEnemiesOnScreen: 6
+    flyingEnemyShootingSpeed: 1.7
+    enemySpawningSpeed: 0.9
+    bomberSpeed: 250
+    spawningEnemies:
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 7
+    flyingEnemyShootingSpeed: 1.6
+    enemySpawningSpeed: 0.8
+    bomberSpeed: 250
+    spawningEnemies:
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 7
+    flyingEnemyShootingSpeed: 1.5
+    enemySpawningSpeed: 0.8
+    bomberSpeed: 250
+    spawningEnemies:
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 8
+    flyingEnemyShootingSpeed: 1.4
+    enemySpawningSpeed: 0.7
+    bomberSpeed: 300
+    spawningEnemies:
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 8
+    flyingEnemyShootingSpeed: 1.3
+    enemySpawningSpeed: 0.7
+    bomberSpeed: 300
+    spawningEnemies:
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+  - maxEnemiesOnScreen: 10
+    flyingEnemyShootingSpeed: 1
+    enemySpawningSpeed: 0.6
+    bomberSpeed: 300
+    spawningEnemies:
+    - {fileID: 2571806042817110935, guid: e67ea6a290b9eb648a7e89cb966d52c5, type: 3}
+    - {fileID: 6948243176417529862, guid: ea116f829bb629f4dbefea22ee1247ff, type: 3}
   timeBetweenEnemySpawn: 1

@@ -38,6 +38,13 @@ namespace Helzinko
 
         private bool playerCreated = false;
 
+        public int gameplayLevel = 0;
+
+        private int sessionRecord = 0;
+
+        [SerializeField] private GameObject recordObject;
+        [SerializeField] private TextMesh recordText;
+
         private void Awake()
         {
             instance = this;
@@ -45,6 +52,13 @@ namespace Helzinko
             Cursor.visible = false;
 
             hud.ActiveStartText(true);
+
+            recordObject.SetActive(false);
+        }
+
+        private void Start()
+        {
+            SoundManager.instance.PlayMusic(GameType.SoundTypes.music);
         }
 
         private void Update()
@@ -61,6 +75,8 @@ namespace Helzinko
             {
                 lava.MoveUp();
                 timeSinceLastWave = 0;
+
+                gameplayLevel++;
             }
 
             if (playerCreated)
@@ -69,7 +85,17 @@ namespace Helzinko
                 playerSurvivedTime += Time.deltaTime;
 
                 if (Mathf.RoundToInt(player.transform.position.y) > playerMetersRecord)
+                {
                     playerMetersRecord = Mathf.RoundToInt(player.transform.position.y);
+                    
+                    if(Mathf.RoundToInt(player.transform.position.y) > sessionRecord)
+                    {
+                        sessionRecord = Mathf.RoundToInt(player.transform.position.y);
+                        recordObject.transform.position = new Vector2(recordObject.transform.position.x, sessionRecord);
+                        recordText.text = sessionRecord.ToString() + " m";
+                    }
+                }
+
             }
 
             hud.UpdateVoidBar(Mathf.RoundToInt(timeSinceLastWave));
@@ -90,6 +116,8 @@ namespace Helzinko
 
         private void LoadLevel()
         {
+            recordObject.SetActive(true);
+
             playerCreated = true;
 
             player = Instantiate(playerPrefab, playerInitPos, default, null);
@@ -129,6 +157,8 @@ namespace Helzinko
 
             hud.ActiveResultText(true);
             hud.ActiveStartText(true);
+
+            gameplayLevel = 0;
         }
     }
 }

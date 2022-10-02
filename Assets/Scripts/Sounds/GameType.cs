@@ -24,6 +24,7 @@ namespace Helzinko
             playerHurt = 7,
             bulletHit = 8,
             lavaMove = 9,
+            music = 10,
         }
     }
 
