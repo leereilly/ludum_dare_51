@@ -31,6 +31,8 @@ namespace Helzinko
 
         public bool touchedLava = false;
 
+        private BoxCollider2D col;
+
         private void Awake()
         {
             sr = GetComponent<SpriteRenderer>();
@@ -39,6 +41,8 @@ namespace Helzinko
                 sr.sprite = sprites[Random.Range(0, sprites.Length)];
             else sr.sprite = landingSprite;
 
+            col = GetComponent<BoxCollider2D>();
+
             // TODO: this is temp until loading implementing
             this.Load();
         }
@@ -46,6 +50,8 @@ namespace Helzinko
         public void Spawn()
         {
             firstLanding = true;
+
+            col.size = new Vector2(col.size.x / 3, col.size.y);
 
             Movement();
         }
@@ -66,6 +72,8 @@ namespace Helzinko
                 if (firstLanding)
                 {
                     firstLanding = false;
+
+                    col.size = new Vector2(col.size.x * 3, col.size.y);
 
                     if (spawnEffect)
                     {
@@ -118,10 +126,6 @@ namespace Helzinko
                         targetPos = new Vector2(transform.position.x, Mathf.Round(ray.transform.GetComponent<Collider2D>().bounds.max.y));
                     }
                 }
-            }
-            else
-            {
-                targetPos = new Vector2(transform.position.x, Vector2.down.y);
             }
             //if (ray)
             //{

@@ -443,6 +443,7 @@ MonoBehaviour:
   stunnedTime: 0.35
   bullet: {fileID: 1223157307299715251, guid: bc93f99c9b03da245839ec0de6b7a855, type: 3}
   bulletPos: {fileID: 6941462028589703650}
+  dieEffect: {fileID: 8072395809699522587, guid: 29873bffbe2194543819adfb8418095c, type: 3}
 --- !u!114 &7903443933806553072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb6d5f7248f47f41b5137c65e69cd1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursor: {fileID: 0}
 --- !u!114 &7903443933806553078
 MonoBehaviour:
   m_ObjectHideFlags: 0

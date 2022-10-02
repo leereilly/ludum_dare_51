@@ -14,6 +14,13 @@ namespace Helzinko
 
         private float traveledTime = 0f;
 
+        public void Reset(Vector3 startPos)
+        {
+            transform.position = startPos;
+            targetHeight = transform.position.y;
+            traveledTime = 0f;
+        }
+
         private void Start()
         {
             targetHeight = transform.position.y;

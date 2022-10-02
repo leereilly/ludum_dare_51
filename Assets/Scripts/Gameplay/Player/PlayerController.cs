@@ -16,7 +16,7 @@ namespace Helzinko
 
         public bool shooting { private set; get; }
 
-        [SerializeField] private Transform cursor;
+        public Transform cursor;
 
         private void Awake()
         {
@@ -45,6 +45,8 @@ namespace Helzinko
         }
         private void Update()
         {
+            if (!cursor) return;
+
             if (playerInput.currentControlScheme == "Keyboard")
             {
                 cursor.gameObject.SetActive(true);

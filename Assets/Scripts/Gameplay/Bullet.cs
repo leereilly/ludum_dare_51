@@ -32,7 +32,7 @@ namespace Helzinko
 
         public void OnLoad()
         {
-            killTween = DOVirtual.DelayedCall(time, () => Destroy(gameObject), false).SetTarget(gameObject);
+            killTween = DOVirtual.DelayedCall(time, () => this.Unload(), false).SetTarget(gameObject);
         }
 
         public void OnUnload()

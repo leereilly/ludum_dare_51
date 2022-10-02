@@ -10,6 +10,8 @@ namespace Helzinko
     {
         public UnityEvent OnShoot;
         public UnityEvent OnJump;
+        public UnityEvent OnDie;
+        public UnityEvent OnDamage;
 
         public PlayerController input { private set; get; }
 
@@ -23,6 +25,8 @@ namespace Helzinko
 
         [SerializeField] private Bullet bullet;
         [SerializeField] public Transform bulletPos;
+
+        [SerializeField] private Effect dieEffect;
 
         private Rigidbody2D rb;
         private GroundCheck groundCheck;
@@ -66,6 +70,8 @@ namespace Helzinko
 
         private void Shoot()
         {
+            SoundManager.instance.PlayEffect(GameType.SoundTypes.playerShoot);
+
             var spawnedBullet = Instantiate(bullet, bulletPos.position, default, null);
             spawnedBullet.Init(input.aimVector.normalized * bulletSpeed, IDamagable.DamageType.Player);
             spawnedBullet.Load();
@@ -84,6 +90,21 @@ namespace Helzinko
                 stunTween = DOVirtual.DelayedCall(stunnedTime, () => stunned = false, false).SetTarget(gameObject);
             }
 
+        }
+
+        public override void Kill(IDamagable.DamageType type)
+        {
+            if (dieEffect)
+                Instantiate(dieEffect, transform.position, default, null);
+
+            OnDie.Invoke();
+
+            base.Kill(type);
+        }
+
+        public void SetCursor(Transform cursor)
+        {
+            GetComponent<PlayerController>().cursor = cursor;
         }
     }
 }

@@ -109,14 +109,12 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
-  lavaMask:
-    serializedVersion: 2
-    m_Bits: 128
   fallingSpeed: 7.5
   dieEffect: {fileID: 5115623745329165271, guid: eecf23a0c0317154492c7b90467282a5, type: 3}
   spawnEffect: {fileID: 6541158704651479814, guid: 800a579c313ebbe489a9b4e987aca54a, type: 3}
   isBottomCube: 0
   initialSpawned: 0
+  touchedLava: 0
 --- !u!50 &903100488501504756
 Rigidbody2D:
   serializedVersion: 4
