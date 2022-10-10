@@ -29,7 +29,7 @@ namespace Helzinko
         public void UpdateResults(int meters, float time)
         {
             timerResultText.SetText("Time survived: <color=#ff5dcc>" + FormattedTime(time) + "</color>");
-            metersResultText.SetText("Meters Rechead: <color=#ff5dcc>" + meters.ToString() + "</color> m");
+            metersResultText.SetText("Meters Reached: <color=#ff5dcc>" + meters.ToString() + "</color> m");
         }
 
         public void UpdateTimer(float time)
